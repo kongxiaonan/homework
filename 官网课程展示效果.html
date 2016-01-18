@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+*{ margin:0;padding:0;}
+body{ background:#666;}
+ul{ height:260px; width:480px; margin:100px auto; position:relative;}
+ul li{ position:absolute;left:0;top:0; list-style:none;-webkit-transform:perspective(1100px) rotateY(0deg) translateX(0px); -webkit-transition:1s all ease;}
+ul li.cur{-webkit-transform:perspective(800px) translateZ(100px); z-index:3;}
+ul li.left1{-webkit-transform:perspective(800px) rotateY(35deg) translateX(-200px); z-index:2;}
+ul li.right1{-webkit-transform:perspective(800px) rotateY(-35deg) translateX(200px); z-index:2;}
+ul li.left2{opacity:0; -webkit-transform:perspective(800px) rotateY(35deg) translateX(-240px);z-index:1;}
+ul li.right2{opacity:0; -webkit-transform:perspective(800px) rotateY(-35deg) translateX(240px);z-index:1;}
+</style>
+<script type="text/javascript">
+window.addEventListener('DOMContentLoaded',function(){
+	var oBtnl = document.getElementsByTagName('input')[0];
+	var oBtnr = document.getElementsByTagName('input')[1];
+	var oUl = document.querySelector('ul');
+	var aLi = oUl.children;
+	var iNow = 2;
+	oBtnr.onclick = function(){
+		iNow++;
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].className = '';
+		}
+		aLi[iNow%aLi.length].className = 'cur';
+		aLi[(iNow-1)%aLi.length].className = 'left1';
+		aLi[(iNow+1)%aLi.length].className = 'right1';
+		aLi[(iNow-2)%aLi.length].className = 'left2';
+		aLi[(iNow+2)%aLi.length].className = 'right2';	
+	};
+	oBtnl.onclick = function(){
+		iNow--;
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].className = '';
+		}
+		aLi[iNow%aLi.length].className = 'cur';
+		aLi[(iNow-1)%aLi.length].className = 'left1';
+		aLi[(iNow+1)%aLi.length].className = 'right1';
+		aLi[(iNow-2)%aLi.length].className = 'left2';
+		aLi[(iNow+2)%aLi.length].className = 'right2';	
+	};
+});	
+</script>
+</head>
+
+<body>
+<input type="button" value="←" class="prev">
+<input type="button" value="→" class="next">
+<ul>
+	<li class="left1"><img src="images/1.jpg" /></li> 
+    <li class="left2"><img src="images/2.jpg" /></li>
+    <li class="cur"><img src="images/3.jpg" /></li>
+    <li class="right1"><img src="images/4.jpg" /></li> 
+    <li class="right2"><img src="images/5.jpg" /></li>
+    <li><img src="images/6.jpg" /></li>
+    <li><img src="images/7.jpg" /></li> 
+    <li><img src="images/8.jpg" /></li>
+    <li><img src="images/9.jpg" /></li>
+    <li><img src="images/10.jpg" /></li> 
+    <li><img src="images/11.jpg" /></li>
+    <li><img src="images/12.jpg" /></li>
+</ul>
+</body>
+</html>
