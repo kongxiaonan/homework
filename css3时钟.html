@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+*{ margin:0;padding:0;}
+#box{ height:300px;; width:300px; border-radius:50%; margin:100px auto; border:2px solid #F66; position:relative;}
+#box .hour{ height:100px; width:8px; background:#F66; border-radius:4px; position:absolute;left:50%;top:50px; margin-left:-4px;-webkit-transform-origin:bottom center; }
+#box .min{height:120px; width:6px; background:#F66; border-radius:4px; position:absolute;left:50%;top:30px; margin-left:-3px;-webkit-transform-origin:bottom center; }
+#box .sec{height:140px; width:4px; background:#F66; border-radius:4px; position:absolute;left:50%;top:10px; margin-left:-2px; -webkit-transform-origin:bottom center;}
+#box .cen{height:20px; width:20px; background:#F66; border-radius:10px; position:absolute;left:50%;top:50%; margin-left:-10px;margin-top:-10px; }
+#box .span1{height:6px; width:4px; background:#F66; position:absolute;left:50%;top:0; margin-left:-2px;-webkit-transform-origin:center 150px;}
+#box .span2{height:10px; width:6px; background:#F66; position:absolute;left:50%;top:0; margin-left:-3px;-webkit-transform-origin:center 150px;}
+#box em{ width:20px; height:20px;text-align:center;color:#F66; position:absolute;left:50%;top:10px; margin-left:-10px; font-style:normal; font-weight:bold; font-family:'微软雅黑';}
+</style>
+<script type="text/javascript">
+window.onload = function(){
+	var oBox = document.querySelector('#box');	
+	var oHour = document.querySelector('#box .hour');	
+	var oMin = document.querySelector('#box .min');
+	var oSec = document.querySelector('#box .sec');	
+	for(var i=0;i<60;i++){
+		var oS = document.createElement('span');
+		if(i%5==0){
+			oS.className = 'span2';
+			var oE = document.createElement('em');
+			oE.innerHTML = i/5+1;
+			oS.appendChild(oE);
+			oE.style.WebkitTransform = 'rotate('+-i*6+'deg)';
+		}else{
+			oS.className = 'span1';
+		}
+		oBox.appendChild(oS);
+		oS.style.WebkitTransform = 'rotate('+i*6+'deg)';
+		
+		
+	}
+	function trik(){
+		var oDate = new Date();
+		oSec.style.WebkitTransform = 'rotate('+oDate.getSeconds()*6+'deg)';
+		oMin.style.WebkitTransform = 'rotate('+(oDate.getMinutes()+oDate.getSeconds()/60)*6+'deg)';
+		oHour.style.WebkitTransform = 'rotate('+(oDate.getHours()+oDate.getMinutes()/60)*30+'deg)';	
+	}
+	trik();
+	setInterval(trik,1000);
+};
+</script>
+</head>
+
+<body>
+<div id="box">
+	<div class="hour"></div>
+    <div class="min"></div>
+    <div class="sec"></div>
+    <div class="cen"></div>
+</div>
+</body>
+</html>
