@@ -26,22 +26,22 @@ window.addEventListener('DOMContentLoaded',function(){
 		for(var i=0;i<aLi.length;i++){
 			aLi[i].className = '';
 		}
-		aLi[iNow%aLi.length].className = 'cur';
-		aLi[(iNow-1)%aLi.length].className = 'left1';
-		aLi[(iNow+1)%aLi.length].className = 'right1';
-		aLi[(iNow-2)%aLi.length].className = 'left2';
-		aLi[(iNow+2)%aLi.length].className = 'right2';	
+		aLi[(iNow%aLi.length+aLi.length)%aLi.length].className = 'cur';
+		aLi[((iNow-1)%aLi.length+aLi.length)%aLi.length].className = 'left1';
+		aLi[((iNow+1)%aLi.length+aLi.length)%aLi.length].className = 'right1';
+		aLi[((iNow-2)%aLi.length+aLi.length)%aLi.length].className = 'left2';
+		aLi[((iNow+2)%aLi.length+aLi.length)%aLi.length].className = 'right2';		
 	};
 	oBtnl.onclick = function(){
 		iNow--;
 		for(var i=0;i<aLi.length;i++){
 			aLi[i].className = '';
 		}
-		aLi[iNow%aLi.length].className = 'cur';
-		aLi[(iNow-1)%aLi.length].className = 'left1';
-		aLi[(iNow+1)%aLi.length].className = 'right1';
-		aLi[(iNow-2)%aLi.length].className = 'left2';
-		aLi[(iNow+2)%aLi.length].className = 'right2';	
+		aLi[(iNow%aLi.length+aLi.length)%aLi.length].className = 'cur';
+		aLi[((iNow-1)%aLi.length+aLi.length)%aLi.length].className = 'left1';
+		aLi[((iNow+1)%aLi.length+aLi.length)%aLi.length].className = 'right1';
+		aLi[((iNow-2)%aLi.length+aLi.length)%aLi.length].className = 'left2';
+		aLi[((iNow+2)%aLi.length+aLi.length)%aLi.length].className = 'right2';	
 	};
 });	
 </script>

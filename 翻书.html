@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+*{ margin:0;padding:0;}
+.con{ height:400px; width:700px; background:url(images/b1.jpg); margin:100px auto; position:relative; left:0;top:0;}
+.page{height:400px; width:350px;position:absolute; left:350px;top:0; -webkit-transform-style:preserve-3d; -webkit-transform:perspective(800px) rotateY(0); -webkit-transition:1s all ease; -webkit-transform-origin:left center;z-index:3; }
+.page .front{height:100%; width:100%;position:absolute; left:0;top:0;background:url(images/b1.jpg) right top; -webkit-transform:translateZ(1px);}
+.page .back{height:100%; width:100%;position:absolute; left:0;top:0;background:url(images/b2.jpg) left top; -webkit-transform:translateZ(-1px) scale(-1,1); }
+.shadow{height:400px; width:350px; background:#000; opacity:0.5;position:absolute; right:0;top:0; z-index:2;-webkit-transition:1s all ease;}
+.bot{height:400px; width:350px; background:url(images/b2.jpg) right top;position:absolute; right:0;top:0; z-index:1;}
+.con:active .page{ -webkit-transform:perspective(800px) rotateY(-180deg);}
+.con:active .shadow{opacity:0;}
+</style>
+</head>
+
+<body>
+<div class="con">
+	<div class="page">
+    	<div class="front"></div>
+        <div class="back"></div>
+    </div>
+    <div class="shadow"></div>
+    <div class="bot"></div>
+</div>
+</body>
+</html>

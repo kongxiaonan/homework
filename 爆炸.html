@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+*{ margin:0;padding:0;}
+body{ overflow:hidden;}
+.box{height:400px; width:700px; background:url(images/b1.jpg); margin:100px auto; position:relative; left:0;top:0;-webkit-transform-style:preserve-3d;}
+.box span{background:url(images/b2.jpg); position:absolute; -webkit-transform:perspective(800px) translate(0,0) rotateX(0) rotateY(0); opacity:1;}
+</style>
+<script type="text/javascript">
+window.addEventListener('DOMContentLoaded',function(){
+	var oBtn = document.querySelector('input');
+	var oBox = document.querySelector('.box');
+	var R = 4;
+	var C = 7;
+	for(var i=0;i<R;i++){
+		for(var j=0;j<C;j++){
+			var oS = document.createElement('span');
+			oS.style.width = oBox.offsetWidth/C+'px';
+			oS.style.height = oBox.offsetHeight/R+'px';
+			oBox.appendChild(oS);
+			oS.style.left = j*oS.offsetWidth+'px'; 
+			oS.style.top = i*oS.offsetHeight+'px'; 
+			oS.style.backgroundPosition =- j*oS.offsetWidth+'px '+-i*oS.offsetHeight+'px';
+		}	
+	}
+	var aS = oBox.children;
+	oBtn.onclick = function(){
+		for(var i=0;i<aS.length;i++){
+			var x = aS[i].offsetLeft+aS[i].offsetWidth/2;
+			var y = aS[i].offsetTop+aS[i].offsetHeight/2;
+			var divX = oBox.offsetWidth/2;
+			var divY = oBox.offsetHeight/2;
+			var disX = x-divX+Math.random()*60-30;
+			var disY = y-divY+Math.random()*60-30;
+			aS[i].style.WebkitTransition = '1s all ease';
+			aS[i].style.WebkitTransform = 'perspective(800px) translate('+disX+'px,'+disY+'px) rotateX('+(Math.random()*360-180)+'deg) rotateY('+(Math.random()*360-180)+'deg)';
+			aS[i].style.opacity = 0;
+		}
+	};
+});
+</script>
+</head>
+
+<body>
+<input type="button" value="爆炸">
+<div class="box"></div>
+</body>
+</html>
